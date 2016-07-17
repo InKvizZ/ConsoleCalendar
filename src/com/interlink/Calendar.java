@@ -12,7 +12,7 @@ public class Calendar {
 	public static void main(String[] args) {
 		LocalDate date = null;
 		
-		System.out.printf("dd/mm/yyyy%n");
+		System.out.printf("Enter the date. Format: dd/mm/yyyy%n");
 		
 		Scanner scanner = new Scanner(System.in);
 		String iputString = scanner.nextLine();
@@ -27,20 +27,20 @@ public class Calendar {
 		
 		scanner.close();
 		System.out.println(date);
-		
-		System.out.format("+-----+-----+-----+-----+-----+-----+-----+%n");
-		System.out.format("| Mon | Tue | Wed | Thu | Fri | Sat | San |%n");
-		System.out.format("+-----+-----+-----+-----+-----+-----+-----+%n");
+
+		System.out.format("+-------+------+-------+------+------+-----+-----+%n");
+		System.out.format("|  Mon  |  Tue |  Wed  | Thu  | Fri  | \u001B[31mSat\u001B[0m | \u001B[31mSan\u001B[0m |%n");
+		System.out.format("+-------+------+-------+------+------+-----+-----+%n");
 		
 		getMonthForConsole(date);
 		
-		System.out.format("+-----+-----+-----+-----+-----+-----+-----+%n");
+		System.out.format("+-------+------+-------+------+------+-----+-----+%n");
 	}
 
 	
 	private static void getMonthForConsole(LocalDate date) {
 		Month month = date.getMonth();
-		String leftAlignFormat = "| %-3s ";
+		String leftAlignFormat = " | %-3s ";
 		
 		LocalDate firstDay = date.withDayOfMonth(1);
 		
@@ -56,9 +56,10 @@ public class Calendar {
 					
 					if (currentDay.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
 							currentDay.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
-						System.out.format(leftAlignFormat, dayOfMonth + "*");
+						System.out.format(leftAlignFormat, "\u001B[31m" + dayOfMonth + "\u001B[0m");
 						//TODO implement color
-					} else if (false) {
+					} else if (date.equals(currentDay)) {
+						System.out.format(leftAlignFormat, "\u001B[32m" + dayOfMonth + " \u001B[0m");
 						//TODO implement CURRENT_DAY
 					} else {
 						System.out.format(leftAlignFormat, dayOfMonth);						
