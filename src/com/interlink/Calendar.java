@@ -12,7 +12,7 @@ public class Calendar {
 	public static void main(String[] args) {
 		LocalDate date = null;
 		
-		System.out.printf("Enter the date. Format: dd/mm/yyyy%n");
+		System.out.printf("Enter the date. Format : dd/mm/yyyy%n");
 		
 		Scanner scanner = new Scanner(System.in);
 		String iputString = scanner.nextLine();
