@@ -3,10 +3,9 @@ package com.interlink;
 import java.time.*;
 import java.text.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
-import javax.xml.stream.events.StartDocument;
+
 public class Calendar {
 
 	public static void main(String[] args) {
@@ -17,8 +16,7 @@ public class Calendar {
 		Scanner scanner = new Scanner(System.in);
 		String iputString = scanner.nextLine();
 		
-		//TODO add validation
-		if (iputString.equals("")) { 
+		if (iputString.equals("")) {
 			date = LocalDate.now();
 		} else {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -57,10 +55,10 @@ public class Calendar {
 					if (currentDay.getDayOfWeek().equals(DayOfWeek.SATURDAY) ||
 							currentDay.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
 						System.out.format(leftAlignFormat, "\u001B[31m" + dayOfMonth + "\u001B[0m");
-						//TODO implement color
+
 					} else if (date.equals(currentDay)) {
 						System.out.format(leftAlignFormat, "\u001B[32m" + dayOfMonth + " \u001B[0m");
-						//TODO implement CURRENT_DAY
+
 					} else {
 						System.out.format(leftAlignFormat, dayOfMonth);						
 					}
